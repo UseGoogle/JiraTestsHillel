@@ -8,6 +8,8 @@ import org.testng.annotations.Test;
 public class LoginPageTest {
     private WebDriver driver;
     private LoginPage loginPage;
+    private DashboardPage dashboardPage;
+
 
 
     @BeforeTest
@@ -19,14 +21,14 @@ public class LoginPageTest {
         driver.manage().window().maximize();
     }
 
-    @AfterTest
-    public void tearDown() {
-        driver.quit();
-    }
+
 
     @Test
     public void successfulLoginToJira() {
         loginPage.loginToJira("Tihran_Behoian", "Tihran_Behoian");
+        dashboardPage = new DashboardPage(driver);
+        Assert.assertTrue(dashboardPage.verifyCreateButtonIsDisplayed());
+
     }
 
     @Test
@@ -35,6 +37,10 @@ public class LoginPageTest {
         Assert.assertEquals(loginPage.getErrorMessageText(), "Sorry, your username and password are incorrect - please try again.");
     }
 
+    @AfterTest
+    public void tearDown() {
+        driver.quit();
+    }
 
 }
 

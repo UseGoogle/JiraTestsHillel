@@ -1,6 +1,7 @@
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
@@ -26,13 +27,17 @@ public class CreateIssuePageTest {
     }
 
     @Test
-    public void successfulLoginToJira(){
+    public void createIssue() {
         loginPage.loginToJira("Tihran_Behoian", "Tihran_Behoian");
         dashboardPage.clickCreateIssueButton();
-        issuePage.createIssue("Something", "Something");
-        // Assert.assertEquals("dsds", dashboardPage.getCreatedIssueText());
+        issuePage.createIssue("Task for AutoTest", "Something");
         Assert.assertTrue(dashboardPage.getCreatedIssue());
-
     }
+
+    @AfterTest
+    public void tearDown() {
+        driver.quit();
+    }
+
 }
 
