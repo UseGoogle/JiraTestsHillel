@@ -1,4 +1,5 @@
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 
 public class CreateIssuePage {
@@ -20,8 +21,12 @@ public class CreateIssuePage {
         driver.findElement(projectFieldLocator).click();
     }
 
-    private void selectIssueType() {
+    private void selectIssueType(String issueType) {
         driver.findElement(issueTypeLocator).click();
+        driver.findElement(issueTypeLocator).sendKeys(Keys.BACK_SPACE);
+        driver.findElement(issueTypeLocator).sendKeys(issueType);
+        //driver.findElement(issueTypeLocator).sendKeys(Keys.ENTER);
+
     }
 
     private void fillSummary(String summary) {
@@ -36,11 +41,11 @@ public class CreateIssuePage {
         driver.findElement(createIssueButtonLocator).click();
     }
 
-    public void createIssue (String description, String summary){
-        selectIssueType();
+    public void createIssue (String summary, String description){
+
         selectProject();
-        fillDescription(description);
         fillSummary(summary);
+        fillDescription(description);
         clickCreateIssueButton();
     }
 

@@ -25,6 +25,10 @@ public class DashboardPage {
     public boolean getCreatedIssue(){
         return driver.findElement(createdIssueLaberLocator).isDisplayed();
     }
+
+    public boolean verifyCreateButtonIsDisplayed(){
+        return driver.findElement(createButtonLocator).isDisplayed();
+    }
 }
 
 
