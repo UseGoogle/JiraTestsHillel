@@ -1,4 +1,5 @@
 # JiraTestsHillel
 Test
 Something 
-qweewqe
+Test merge conflict.
+:)
