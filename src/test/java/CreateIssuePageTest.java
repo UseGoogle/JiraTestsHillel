@@ -29,14 +29,12 @@ public class CreateIssuePageTest extends BaseTest{
 
 
     @Test
-    public void verifyFieldisCleard() throws InterruptedException {
+    public void ewr(){
         loginPage.loginToJira("Tihran_Behoian", "Tihran_Behoian");
         dashboardPage.clickCreateIssueButton();
         issuePage = new CreateIssuePage(driver);
-        issuePage.issueWebElementBuilder("Epic");
-        CreateIssuePage issuePage
-        Thread.sleep(4000);
-        issuePage.createIssue1();
+        issuePage.clickIssueDropDown();
+        issuePage.getIssueOptionXpath("Bug").click();
     }
 
 

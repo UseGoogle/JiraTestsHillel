@@ -12,12 +12,11 @@ public class CreateIssuePage {
 
 
     private By projectFieldLocator = By.xpath("//input[@id='project-field']");
-    public By issueTypeLocator = By.xpath("//input[@id='issuetype-field']");
+    private By issueTypeLocator = By.xpath("//input[@id='issuetype-field']");
     private By summaryFieldLocator = By.xpath("//input[@id='summary']");
     private By descriptionTextAreaLocator = By.xpath("//textarea[@id='description']");
     private By createIssueButtonLocator = By.xpath("//input[@id='create-issue-submit']");
-    private By issue;
-
+    WebElement ds;
 
     private void selectProject() {
         driver.findElement(projectFieldLocator).click();
@@ -39,44 +38,29 @@ public class CreateIssuePage {
         driver.findElement(descriptionTextAreaLocator).sendKeys(description);
     }
 
-    private void clickCreateIssueButton() {
+    public void clickCreateIssueButton() {
         driver.findElement(createIssueButtonLocator).click();
     }
 
-    public void clearField(WebElement webElement){
-        driver.findElement((By) webElement).clear();
-    }
-
-    public void createIssue (WebElement webElement, String type, String summary, String description){
-        fillSummary(summary);
-        fillDescription(description);
-        clickCreateIssueButton();
-    }
-
-    public void seele() throws InterruptedException {
+    public void clickIssueDropDown() {
         driver.findElement(issueTypeLocator).click();
-        Thread.sleep(4000);
     }
 
 
-    public By issueWebElementBuilder(String issueType){
-        WebElement Issue = driver.findElement(By.xpath("//a[@class='aui-list-item-link aui-iconised-link']/parent::li//a[contains(text(),'" + issueType + "')]"));
-        return this.issue;
-    }
-
-    public void createIssue1() throws InterruptedException {{
-        driver.findElement(issueTypeLocator).click();
-        Thread.sleep(4000);
-        driver.findElement(issue).click();
-        Thread.sleep(4000);
-
-
-
+    public WebElement getIssueOptionXpath(String issueType) {
+        String path = String.format("//a[@class='aui-list-item-link aui-iconised-link']/parent::li//a[contains(text(),'%s')]", issueType);
+        WebElement issueOptionXpath = driver.findElement(By.xpath(path));
+        return issueOptionXpath;
     }
 
 
-    }
+
+
+
+
+
 
 
 }
+
 
