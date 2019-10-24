@@ -1,4 +1,0 @@
-# JiraTestsHillel
-Test
-Something 
-qweewqe

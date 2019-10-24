@@ -1,48 +1,21 @@
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+import Pages.DashboardPage;
+import Pages.LoginPage;
+import Properties.URL;
+import io.qameta.allure.Feature;
 import org.testng.Assert;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-public class LoginPageTest {
-    private WebDriver driver;
-    private LoginPage loginPage;
-    private DashboardPage dashboardPage;
+public class LoginPageTest extends BaseTest {
 
-
-
-    @BeforeTest
-    public void setUp() {
-        System.setProperty("webdriver.chrome.driver", "C:\\Users\\Tihran Behoian\\IdeaProjects\\drivers\\chromedriver.exe");
-        driver = new ChromeDriver();
-        driver.get("https://jira.hillel.it/login.jsp");
-        loginPage = new LoginPage(driver);
-        driver.manage().window().maximize();
-    }
-
-
-
-    @Test
+    @Feature("Login")
+    @Test(groups = {"Regression"})
     public void successfulLoginToJira() {
-        loginPage.loginToJira("Tihran_Behoian", "Tihran_Behoian");
-        dashboardPage = new DashboardPage(driver);
-        Assert.assertTrue(dashboardPage.verifyCreateButtonIsDisplayed());
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.navigate(URL.BETA);
+        loginPage.successfulLoginToJira("Tihran_Behoian", "Tihran_Behoian");
+        DashboardPage dashboardPage = new DashboardPage(driver);
 
     }
-
-    @Test
-    public void invalidLoginToJira() {
-        loginPage.loginToJira("Tihran_Behoian", "incorrectPassword");
-        Assert.assertEquals(loginPage.getErrorMessageText(), "Sorry, your username and password are incorrect - please try again.");
-    }
-
-
-    @AfterTest
-    public void tearDown() {
-        driver.quit();
-    }
-
 
 
 }
