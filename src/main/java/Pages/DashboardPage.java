@@ -2,13 +2,14 @@ package Pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import utils.WebDriverFactory;
 
 public class DashboardPage {
 
     private WebDriver driver;
     UI_Actions ui_actions;
-    public DashboardPage(WebDriver driver) {
-        this.driver = driver;
+    public DashboardPage() {
+        driver = WebDriverFactory.getDriver();
         ui_actions = new UI_Actions(driver);
     }
 

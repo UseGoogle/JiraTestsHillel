@@ -4,6 +4,7 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import utils.WebDriverFactory;
 
 
 import java.util.List;
@@ -13,8 +14,8 @@ public class CreateIssuePage {
     private WebDriver driver;
     private UI_Actions ui_actions;
 
-    public CreateIssuePage(WebDriver driver) {
-        this.driver = driver;
+    public CreateIssuePage() {
+        driver = WebDriverFactory.getDriver();
         ui_actions = new UI_Actions(driver);
     }
 

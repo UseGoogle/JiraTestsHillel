@@ -4,14 +4,15 @@ import Properties.URL;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import utils.WebDriverFactory;
 
 
 public class LoginPage {
 
     private WebDriver driver;
 
-    public LoginPage(WebDriver driver) {
-        this.driver = driver;
+    public LoginPage() {
+        this.driver = WebDriverFactory.getDriver();
     }
 
 
@@ -29,12 +30,12 @@ public class LoginPage {
     }
 
 
-    @Step("Fill UserName Field")
+    @Step("Fill User Name Field")
     private void typeUserName(String userName) {
         driver.findElement(userNameLocator).sendKeys(userName);
     }
 
-    @Step("Fill UserPassword Field")
+    @Step("Fill User Password Field")
     private void typePassword(String password) {
         driver.findElement(passwordLocator).sendKeys(password);
     }

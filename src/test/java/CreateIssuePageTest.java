@@ -11,12 +11,12 @@ public class CreateIssuePageTest extends BaseTest {
 
     @Test
     public void createIssue() {
-        LoginPage loginPage = new LoginPage(driver);
+        LoginPage loginPage = new LoginPage();
         loginPage.navigate(URL.BETA);
         loginPage.successfulLoginToJira("Tihran_Behoian", "Tihran_Behoian");
-        DashboardPage dashboardPage = new DashboardPage(driver);
+        DashboardPage dashboardPage = new DashboardPage();
         dashboardPage.clickCreateIssueButton();
-        CreateIssuePage issuePage = new CreateIssuePage(driver);
+        CreateIssuePage issuePage = new CreateIssuePage();
         issuePage.setProjectByEnteringText("QAAUT-8");
         issuePage.setIssueTypeByEnteringText("Task");
         issuePage.enterIssueDescription("Well done");

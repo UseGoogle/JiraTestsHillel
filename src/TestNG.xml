@@ -1,10 +1,17 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Parallel test suite" >
-    <test name="Issue">
+    
+    
+    <listeners>
+        <listener class-name="utils.TestListener"></listener>
+    </listeners>
+    
+    
+    <test name="Login">
         <groups>
             <run>
                 <include name="Regression"/>
-                <exclude name="SKIP"/>
+                <exclude name="Smoke"/>
             </run>
         </groups>
         <classes>
