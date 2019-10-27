@@ -1,15 +1,18 @@
 
-import Pages.CreateIssuePage;
-import Pages.DashboardPage;
-import Pages.LoginPage;
-import Properties.URL;
+import pages.CreateIssuePage;
+import pages.DashboardPage;
+import pages.LoginPage;
+import properties.URL;
+import io.qameta.allure.Feature;
 import org.testng.annotations.Test;
 
 
-public class CreateIssuePageTest extends BaseTest {
+public class CreateIssueTest extends BaseTest {
 
 
-    @Test
+
+    @Feature("Create an Issue")
+    @Test(groups = {"Regression"})
     public void createIssue() {
         LoginPage loginPage = new LoginPage();
         loginPage.navigate(URL.BETA);

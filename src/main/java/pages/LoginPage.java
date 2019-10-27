@@ -1,6 +1,6 @@
-package Pages;
+package pages;
 
-import Properties.URL;
+import properties.URL;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

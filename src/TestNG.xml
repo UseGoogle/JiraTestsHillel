@@ -1,21 +1,37 @@
-<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Parallel test suite" >
-    
-    
+
+
     <listeners>
         <listener class-name="utils.TestListener"></listener>
     </listeners>
-    
-    
+
+
     <test name="Login">
         <groups>
             <run>
+                <include name="Smoke"/>
                 <include name="Regression"/>
-                <exclude name="Smoke"/>
             </run>
         </groups>
         <classes>
-            <class name="LoginPageTest"/>
+            <class name="LoginTest"/>
         </classes>
     </test>
+
+    <test name="Create Jira Issue">
+        <groups>
+            <run>
+                <include name="Smoke"/>
+                <include name="Regression"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="CreateIssueTest"/>
+        </classes>
+    </test>
+
+
+
+
+
 </suite>

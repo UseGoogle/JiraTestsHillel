@@ -10,6 +10,8 @@ public class BaseTest {
         WebDriverFactory.createInstance("Chrome");
     }
 
+
+
     @AfterTest(groups = "Regression")
     public void tearDown() {
         WebDriverFactory.getDriver().quit();

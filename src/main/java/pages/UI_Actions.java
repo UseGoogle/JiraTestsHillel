@@ -1,6 +1,5 @@
-package Pages;
+package pages;
 
-import io.qameta.allure.Step;
 import org.openqa.selenium.*;
 
 import java.util.concurrent.TimeUnit;
@@ -105,3 +104,4 @@ public class UI_Actions {
 
 
 }
+
