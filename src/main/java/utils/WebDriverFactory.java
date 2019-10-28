@@ -6,7 +6,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-public class WebDriverFactory  {
+public class WebDriverFactory {
+
 
     private static final ThreadLocal<WebDriver> webDriver = new ThreadLocal<WebDriver>();
 
@@ -26,22 +27,22 @@ public class WebDriverFactory  {
 
         WebDriver driver;
 
-        switch (browserName){
+        switch (browserName) {
             case "FireFox":
                 WebDriverManager.firefoxdriver().setup();
                 driver = new FirefoxDriver();
-            break;
+                break;
             case "Chrome":
                 WebDriverManager.chromedriver().setup();
                 driver = new ChromeDriver();
-            break;
+                break;
             case "Edge":
                 WebDriverManager.edgedriver().setup();
                 driver = new EdgeDriver();
-            default: WebDriverManager.chromedriver().setup();
-            driver = new ChromeDriver();
-
-
+                break;
+            default:
+                WebDriverManager.chromedriver().setup();
+                driver = new ChromeDriver();
         }
 
         driver.manage().window().maximize();
@@ -49,3 +50,4 @@ public class WebDriverFactory  {
     }
 
 }
+
