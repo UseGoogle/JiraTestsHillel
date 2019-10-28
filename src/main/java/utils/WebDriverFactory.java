@@ -3,9 +3,8 @@ package utils;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.ie.InternetExplorerDriver;
-import org.openqa.selenium.remote.DesiredCapabilities;
 
 public class WebDriverFactory  {
 
@@ -25,20 +24,24 @@ public class WebDriverFactory  {
 
     public static void createInstance(String browserName) {
 
-        DesiredCapabilities capability = null;
-        WebDriver driver = null;
+        WebDriver driver;
 
-        if (browserName.toLowerCase().contains("firefox")) {
-            WebDriverManager.firefoxdriver().setup();
-            driver = new FirefoxDriver();
-        } else if (browserName.toLowerCase().contains("internet")) {
-            WebDriverManager.iedriver().setup();
-            driver = new InternetExplorerDriver();
-        } else if (browserName.toLowerCase().contains("chrome")) {
-            WebDriverManager.chromedriver().version("77.0.3865.40").setup();
+        switch (browserName){
+            case "FireFox":
+                WebDriverManager.firefoxdriver().setup();
+                driver = new FirefoxDriver();
+            break;
+            case "Chrome":
+                WebDriverManager.chromedriver().setup();
+                driver = new ChromeDriver();
+            break;
+            case "Edge":
+                WebDriverManager.edgedriver().setup();
+                driver = new EdgeDriver();
+            default: WebDriverManager.chromedriver().setup();
             driver = new ChromeDriver();
-        } else {
-            driver = new ChromeDriver();
+
+
         }
 
         driver.manage().window().maximize();

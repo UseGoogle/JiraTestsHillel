@@ -7,7 +7,7 @@ public class BaseTest {
     @BeforeTest(groups = "Regression")
     public void setUp() {
 
-        WebDriverFactory.createInstance("Chrome");
+        WebDriverFactory.createInstance("FireFox");
     }
 
 
