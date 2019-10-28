@@ -1,6 +1,8 @@
 package utils;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
@@ -8,6 +10,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class WebDriverFactory {
 
+    private static Logger logger = LogManager.getLogger(WebDriverFactory.class);
 
     private static final ThreadLocal<WebDriver> webDriver = new ThreadLocal<WebDriver>();
 
@@ -27,7 +30,7 @@ public class WebDriverFactory {
 
         WebDriver driver;
 
-        switch (browserName) {
+        switch (browserName.toLowerCase()) {
             case "FireFox":
                 WebDriverManager.firefoxdriver().setup();
                 driver = new FirefoxDriver();
@@ -43,6 +46,7 @@ public class WebDriverFactory {
             default:
                 WebDriverManager.chromedriver().setup();
                 driver = new ChromeDriver();
+                logger.error("Setted Browser isn`t launched. Chrome is used as default browser for auto-tests");
         }
 
         driver.manage().window().maximize();

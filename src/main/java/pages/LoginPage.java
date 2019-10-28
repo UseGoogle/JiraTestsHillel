@@ -43,12 +43,11 @@ public class LoginPage {
     @Step("Click SignIn Button")
     private void clickLoginButton() {
         String url = URL.BETA;
-        if ( url == URL.BETA)
-        {
+
+
+        if (url == URL.BETA) {
             driver.findElement(LoginButtonLocatorFromLoginForm).click();
-        }
-        else
-        {
+        } else {
             driver.findElement(loginButtonLocator).click();
         }
     }
