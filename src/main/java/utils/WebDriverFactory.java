@@ -30,7 +30,7 @@ public class WebDriverFactory {
 
         WebDriver driver;
 
-        switch (browserName.toLowerCase()) {
+        switch (browserName) {
             case "FireFox":
                 WebDriverManager.firefoxdriver().setup();
                 driver = new FirefoxDriver();

@@ -1,5 +1,6 @@
 package pages;
 
+import org.testng.Assert;
 import properties.URL;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
@@ -58,11 +59,16 @@ public class LoginPage {
     }
 
 
-    public void successfulLoginToJira(String userName, String userPassword) {
+    public void loginToJira(String userName, String userPassword) {
         typeUserName(userName);
         typePassword(userPassword);
         selectRememberMeCheckBox();
         clickLoginButton();
+    }
+
+
+    public void checkLogin(String URL){
+        Assert.assertEquals(driver.getCurrentUrl(), URL);
     }
 
     public String getErrorMessageText() {
