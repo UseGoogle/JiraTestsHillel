@@ -14,6 +14,7 @@ public class LoginTest extends BaseTest {
         loginPage.navigate(URL.BETA);
         loginPage.loginToJira(Credentionals.USERNAME, Credentionals.PASSWORD);
         loginPage.checkLogin(URL.DASHBOARD);
+
     }
 
 
