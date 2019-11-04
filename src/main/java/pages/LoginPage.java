@@ -1,5 +1,6 @@
 package pages;
 
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import properties.URL;
 import io.qameta.allure.Step;
@@ -75,4 +76,18 @@ public class LoginPage {
         return driver.findElement(errorMessageLocator).getText();
 
     }
+
+
+    public void checker(){
+        if(driver.findElement(errorMessageLocator).isDisplayed()){
+            System.out.println("haha");
+        }
+        else{
+
+            driver.findElement(errorMessageLocator).isDisplayed();
+
+
+        }
+    }
+
 }

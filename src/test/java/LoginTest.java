@@ -2,7 +2,6 @@ import pages.LoginPage;
 import properties.Credentionals;
 import properties.URL;
 import io.qameta.allure.Feature;
-import org.testng.Assert;
 import org.testng.annotations.Test;
 
 
@@ -16,6 +15,10 @@ public class LoginTest extends BaseTest {
         loginPage.loginToJira(Credentionals.USERNAME, Credentionals.PASSWORD);
         loginPage.checkLogin(URL.DASHBOARD);
     }
+
+
+
+
 
 }
 
