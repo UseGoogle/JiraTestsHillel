@@ -59,6 +59,14 @@ public class LoginPage extends BasePageObject {
     }
 
 
+    public void negativeLogIn(String username, String password) {
+        logger.info("Executing Negative LogIn with username [" + username + "] and password [" + password + "]");
+        type(username, userNameLocator);
+        type(password, passwordLocator);
+        click(loginButtonLocator);
+    }
+
+
 
     public String getErrorMessageText() {
         return driver.findElement(errorMessageLocator).getText();
