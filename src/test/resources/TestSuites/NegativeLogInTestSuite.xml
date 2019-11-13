@@ -7,7 +7,7 @@
 
 
     <test name="NegativeUsernameTest-CH">
-        <parameter name="browser" value="FireFox"></parameter>
+        <parameter name="browser" value="firefox"></parameter>
         <classes>
             <class name="NegativeLoginTests">
             </class>

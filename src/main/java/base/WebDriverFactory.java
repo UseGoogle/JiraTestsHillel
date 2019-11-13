@@ -1,6 +1,7 @@
 package base;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
@@ -10,9 +11,11 @@ public class WebDriverFactory {
 
     private ThreadLocal<WebDriver> driver = new ThreadLocal<WebDriver>();
     private String browser;
+    private Logger loggerg;
 
 
-    public WebDriverFactory(String browser) {
+
+    public WebDriverFactory(String browser, Logger logger) {
         this.browser = browser.toLowerCase();
     }
 
@@ -21,16 +24,16 @@ public class WebDriverFactory {
 
 
         switch (browser) {
-            case "FireFox":
+            case "firefox":
                 WebDriverManager.firefoxdriver().setup();
                 driver.set(new FirefoxDriver());
                 break;
 
-            case "Chrome":
+            case "chrome":
                 WebDriverManager.chromedriver().setup();
                 driver.set(new ChromeDriver());
                 break;
-            case "Edge":
+            case "edge":
                 WebDriverManager.edgedriver().setup();
                 driver.set(new EdgeDriver());
                 break;
