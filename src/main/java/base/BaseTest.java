@@ -14,7 +14,7 @@ public class BaseTest {
 
     @Parameters({"browser"})
     @BeforeMethod(alwaysRun = true)
-    public void setUp(@Optional("chrome")  String browser) {
+    public void setUp(String browser) {
         WebDriverFactory factory = new WebDriverFactory(browser);
         driver = factory.createWebDriverInstance();
     }

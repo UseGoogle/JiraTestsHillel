@@ -1,7 +1,6 @@
 package pages;
 
 import org.apache.logging.log4j.Logger;
-import org.testng.Assert;
 import properties.URL;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
