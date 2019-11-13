@@ -18,7 +18,7 @@ public class LoginPage extends BasePageObject {
     private By userNameLocator = By.xpath("//input[@id='login-form-username']");
     private By passwordLocator = By.xpath("//input[@id='login-form-password']");
     private By errorMessageLocator = By.xpath("//div[@class='aui-message aui-message-error']");
-    private By loginButtonLocator = By.xpath("//input[@id='login']");
+    private By loginButtonLocator = By.id("login-form-submit");
     private By rememberMeCheckBoxLocator = By.xpath("//input[@id='login-form-remember-me']");
 
 
@@ -45,7 +45,7 @@ public class LoginPage extends BasePageObject {
     }
 
     @Step("Click SignIn Button")
-    private void clickSignInButton(){
+    public void clickSignInButton(){
         click(loginButtonLocator);
     }
 
