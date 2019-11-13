@@ -1,20 +1,18 @@
 package pages;
 
-import org.openqa.selenium.WebElement;
+import org.apache.logging.log4j.Logger;
 import org.testng.Assert;
 import properties.URL;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import utils.WebDriverFactory;
 
 
-public class LoginPage {
+public class LoginPage extends BasePageObject {
 
-    private WebDriver driver;
 
-    public LoginPage() {
-        this.driver = WebDriverFactory.getDriver();
+    public LoginPage(WebDriver driver, Logger logger) {
+        super(driver, logger);
     }
 
 
@@ -22,72 +20,50 @@ public class LoginPage {
     private By passwordLocator = By.xpath("//input[@id='login-form-password']");
     private By errorMessageLocator = By.xpath("//div[@class='aui-message aui-message-error']");
     private By loginButtonLocator = By.xpath("//input[@id='login']");
-    private By LoginButtonLocatorFromLoginForm = By.xpath("//input[@id='login-form-submit']");
     private By rememberMeCheckBoxLocator = By.xpath("//input[@id='login-form-remember-me']");
 
 
     @Step("Navigate to Login Page")
-    public void navigate(String url) {
-        driver.get(url);
+    public void openPage() {
+        openUrl(URL.BETA);
     }
 
 
     @Step("Fill User Name Field")
-    private void typeUserName(String userName) {
-        driver.findElement(userNameLocator).sendKeys(userName);
+    private void typeUserName(String username) {
+        type(username, userNameLocator);
     }
 
     @Step("Fill User Password Field")
     private void typePassword(String password) {
-        driver.findElement(passwordLocator).sendKeys(password);
+        type(password, passwordLocator);
+    }
+
+
+    @Step("Click RememberMe CheckBox")
+    private void  clickRememberMeCheckBox() {
+        click(rememberMeCheckBoxLocator);
     }
 
     @Step("Click SignIn Button")
-    private void clickLoginButton() {
-        String url = URL.BETA;
-
-
-        if (url == URL.BETA) {
-            driver.findElement(LoginButtonLocatorFromLoginForm).click();
-        } else {
-            driver.findElement(loginButtonLocator).click();
-        }
-    }
-
-    @Step("Click RememberMe CheckBox")
-    private void selectRememberMeCheckBox() {
-        driver.findElement(rememberMeCheckBoxLocator).click();
+    private void clickSignInButton(){
+        click(loginButtonLocator);
     }
 
 
-    public void loginToJira(String userName, String userPassword) {
-        typeUserName(userName);
-        typePassword(userPassword);
-        selectRememberMeCheckBox();
-        clickLoginButton();
+    public void loginToJira(String username, String password) {
+        typeUserName(username);
+        typePassword(password);
+        clickRememberMeCheckBox();
+        clickSignInButton();
     }
 
 
-    public void checkLogin(String URL){
-        Assert.assertEquals(driver.getCurrentUrl(), URL);
-    }
 
     public String getErrorMessageText() {
         return driver.findElement(errorMessageLocator).getText();
 
     }
 
-
-    public void checker(){
-        if(driver.findElement(errorMessageLocator).isDisplayed()){
-            System.out.println("haha");
-        }
-        else{
-
-            driver.findElement(errorMessageLocator).isDisplayed();
-
-
-        }
-    }
 
 }
