@@ -16,11 +16,15 @@ public class NegativeLoginTest extends TestUtility {
 
         String username = testData.get("username");
         String password = testData.get("password");
+        String expectedErrorMessage = testData.get("expected_message");
+
 
         LoginPage loginPage = new LoginPage(driver, logger);
         loginPage.openPage();
         loginPage.negativeLogIn(username, password);
         loginPage.clickSignInButton();
+        Assert.assertEquals(loginPage.getErrorMessageText(), expectedErrorMessage);
+
     }
 
 }
