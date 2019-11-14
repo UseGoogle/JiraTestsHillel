@@ -50,19 +50,11 @@ public class LoginPage extends BasePageObject {
     }
 
 
-    public void loginToJira(String username, String password) {
-        typeUserName(username);
-        typePassword(password);
-        click(rememberMeCheckBoxLocator);
-        click(loginButtonLocator);
-    }
-
 
     public void negativeLogIn(String username, String password) {
         type(userNameLocator, username);
         type(passwordLocator, password);
         clickRememberMeCheckBox();
-        clickLoginButton();
         click(loginButtonLocator);
     }
 

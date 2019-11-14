@@ -2,7 +2,6 @@ package base;
 
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
-import org.testng.ITestContext;
 import org.testng.annotations.*;
 
 public class BaseTest {
@@ -12,10 +11,11 @@ public class BaseTest {
 
     @Parameters({"browser"})
     @BeforeMethod(alwaysRun = true)
-    public void setUp(@Optional("chrome") String browser, ITestContext ct) {
+    public void setUp(@Optional("chrome") String browser) {
         WebDriverFactory factory = new WebDriverFactory(browser, logger);
         driver = factory.createWebDriverInstance();
     }
+
 
 
     @AfterMethod(alwaysRun = true)
