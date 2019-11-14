@@ -51,17 +51,17 @@ public class LoginPage extends BasePageObject {
 
 
     public void loginToJira(String username, String password) {
-        typeUserName(username);
-        typePassword(password);
-        clickRememberMeCheckBox();
-        clickSignInButton();
+        type(userNameLocator, username);
+        type(passwordLocator, password);
+        click(rememberMeCheckBoxLocator);
+        click(loginButtonLocator);
     }
 
 
     public void negativeLogIn(String username, String password) {
-        logger.info("Executing Negative LogIn with username [" + username + "] and password [" + password + "]");
         type(userNameLocator, username);
         type(passwordLocator, password);
+        click(rememberMeCheckBoxLocator);
         click(loginButtonLocator);
     }
 

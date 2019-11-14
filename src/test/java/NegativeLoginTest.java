@@ -8,10 +8,10 @@ import base.CSVDataProvider;
 import java.util.Map;
 
 
-public class NegativeLoginTests extends TestUtility {
+public class NegativeLoginTest extends TestUtility {
 
 
-    @Test(priority = 1, dataProvider = "csvReader", dataProviderClass = CSVDataProvider.class)
+    @Test(dataProvider = "csvReader", dataProviderClass = CSVDataProvider.class)
     public void negativeLoginTest(Map<String, String> testData) {
 
         String username = testData.get("username");
@@ -19,9 +19,8 @@ public class NegativeLoginTests extends TestUtility {
 
         LoginPage loginPage = new LoginPage(driver, logger);
         loginPage.openPage();
-       loginPage.loginToJira(username, password);
+        loginPage.negativeLogIn(username, password);
         loginPage.clickSignInButton();
-        Assert.assertEquals(loginPage.getErrorMessageText(), loginPage.getErrorMessageText());
     }
 
 }
