@@ -59,8 +59,8 @@ public class LoginPage extends BasePageObject {
     }
 
 
-    public String getErrorMessageText() {
-        return driver.findElement(errorMessageLocator).getText();
+    public boolean getErrorMessageText() {
+        return driver.findElement(errorMessageLocator).isDisplayed();
 
     }
 

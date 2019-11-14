@@ -22,7 +22,7 @@ public class NegativeLoginTest extends TestUtility {
         LoginPage loginPage = new LoginPage(driver, logger);
         loginPage.openPage();
         loginPage.negativeLogIn(username, password);
-        Assert.assertEquals(loginPage.getErrorMessageText(), expectedErrorMessage);
+        Assert.assertTrue(loginPage.getErrorMessageText(), expectedErrorMessage);
 
     }
 

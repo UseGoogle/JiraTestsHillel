@@ -4,15 +4,23 @@
 <suite name="NegativeLogInTestSuite" verbose="1" parallel="tests" thread-count="1">
 
 
-
-
     <test name="NegativeUsernameTest-CH">
         <parameter name="browser" value="chrome"></parameter>
+
         <classes>
             <class name="NegativeLoginTest">
             </class>
         </classes>
     </test>
+
+    <test name="NegativeUsernameTest-FF">
+        <parameter name="browser" value="firefox"></parameter>
+        <classes>
+            <class name="NegativeLoginTest">
+            </class>
+        </classes>
+    </test>
+
 
 
 
