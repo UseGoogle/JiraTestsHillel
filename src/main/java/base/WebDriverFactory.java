@@ -11,12 +11,13 @@ public class WebDriverFactory {
 
     private ThreadLocal<WebDriver> driver = new ThreadLocal<WebDriver>();
     private String browser;
-    private Logger loggerg;
-
+    private Logger logger;
 
 
     public WebDriverFactory(String browser, Logger logger) {
         this.browser = browser.toLowerCase();
+        this.logger = logger;
+
     }
 
 
@@ -40,6 +41,7 @@ public class WebDriverFactory {
             default:
                 WebDriverManager.chromedriver().setup();
                 driver.set(new ChromeDriver());
+                logger.info("Default browser is started");
 
         }
 

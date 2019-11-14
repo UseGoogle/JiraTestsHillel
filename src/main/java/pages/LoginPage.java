@@ -40,19 +40,19 @@ public class LoginPage extends BasePageObject {
 
 
     @Step("Click RememberMe CheckBox")
-    private void  clickRememberMeCheckBox() {
+    private void clickRememberMeCheckBox() {
         click(rememberMeCheckBoxLocator);
     }
 
     @Step("Click SignIn Button")
-    public void clickSignInButton(){
+    public void clickLoginButton() {
         click(loginButtonLocator);
     }
 
 
     public void loginToJira(String username, String password) {
-        type(userNameLocator, username);
-        type(passwordLocator, password);
+        typeUserName(username);
+        typePassword(password);
         click(rememberMeCheckBoxLocator);
         click(loginButtonLocator);
     }
@@ -61,10 +61,10 @@ public class LoginPage extends BasePageObject {
     public void negativeLogIn(String username, String password) {
         type(userNameLocator, username);
         type(passwordLocator, password);
-        click(rememberMeCheckBoxLocator);
+        clickRememberMeCheckBox();
+        clickLoginButton();
         click(loginButtonLocator);
     }
-
 
 
     public String getErrorMessageText() {
