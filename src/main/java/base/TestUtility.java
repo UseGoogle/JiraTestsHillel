@@ -2,7 +2,7 @@ package base;
 
 import org.testng.annotations.DataProvider;
 
-public class TestUtilities extends BaseTest {
+public class TestUtility extends BaseTest {
 
 
     @DataProvider(name = "files")

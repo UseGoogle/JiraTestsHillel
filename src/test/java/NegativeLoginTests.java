@@ -2,13 +2,13 @@ import org.testng.Assert;
 import pages.LoginPage;
 
 import org.testng.annotations.Test;
-import base.TestUtilities;
+import base.TestUtility;
 import base.CSVDataProvider;
 
 import java.util.Map;
 
 
-public class NegativeLoginTests extends TestUtilities {
+public class NegativeLoginTests extends TestUtility {
 
 
     @Test(priority = 1, dataProvider = "csvReader", dataProviderClass = CSVDataProvider.class)
@@ -19,7 +19,7 @@ public class NegativeLoginTests extends TestUtilities {
 
         LoginPage loginPage = new LoginPage(driver, logger);
         loginPage.openPage();
-       // loginPage.loginToJira(username, password);
+       loginPage.loginToJira(username, password);
         loginPage.clickSignInButton();
         Assert.assertEquals(loginPage.getErrorMessageText(), loginPage.getErrorMessageText());
     }

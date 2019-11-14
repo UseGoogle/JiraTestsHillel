@@ -30,12 +30,12 @@ public class LoginPage extends BasePageObject {
 
     @Step("Fill User Name Field")
     private void typeUserName(String username) {
-        type(username, userNameLocator);
+        type(userNameLocator, username);
     }
 
     @Step("Fill User Password Field")
     private void typePassword(String password) {
-        type(password, passwordLocator);
+        type(passwordLocator, password);
     }
 
 
@@ -60,8 +60,8 @@ public class LoginPage extends BasePageObject {
 
     public void negativeLogIn(String username, String password) {
         logger.info("Executing Negative LogIn with username [" + username + "] and password [" + password + "]");
-        type(username, userNameLocator);
-        type(password, passwordLocator);
+        type(userNameLocator, username);
+        type(passwordLocator, password);
         click(loginButtonLocator);
     }
 

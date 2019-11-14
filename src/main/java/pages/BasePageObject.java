@@ -33,7 +33,7 @@ public class BasePageObject {
         find(locator).click();
     }
 
-    protected void type(String text, By locator) {
+    protected void type(By locator, String text) {
         waitForVisibilityOf(locator, 5);
         find(locator).sendKeys(text);
     }
